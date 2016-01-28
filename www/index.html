@@ -37,9 +37,15 @@
     <script src="cordova.js" type="text/javascript"></script>
     
     <script type="text/javascript">
-      document.addEventListener("deviceready", onDeviceReady, false);
+      document.addEventListener("deviceready",onDeviceReady,false);
 
       function onDeviceReady() {
+
+        cordova.plugins.printer.isAvailable(
+          function (isAvailable) {
+            alert(isAvailable ? 'Service is available' : 'Service NOT available');
+          }
+        );
 
         $('#printTest').on('click touch', function() {
           cordova.plugins.zbtprinter.find(function(mac) { 
@@ -52,7 +58,7 @@
         });
 
         $('#printText').on('click touch', function() {
-          cordova.plugins.zbtprinter.print("^XA^FO10,10^AFN,26,13^FDHello, World!^FS^XZ",
+          cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "^XA^FO10,10^AFN,26,13^FDHello, World!^FS^XZ",
             function(success) { 
               alert("Print ok"); 
               $('#printTestResult').text("Print ok");
@@ -60,7 +66,11 @@
               alert(fail); 
               $('#printTestResult').text(fail);
             }
-          );        
+          );
+          var page = '<h1>Hello Document</h1>';
+          cordova.plugins.printer.print(page, 'index.html', function () {
+              alert('printing finished or canceled')
+          });        
         });
       }
     </script>
