@@ -22,8 +22,10 @@
     <button class="btn btn-primary" onclick="capturePhoto();">Capture Photo</button> <br/><br/>
     <button class="btn btn-primary" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br/><br/>
     
-    <img class="img img-responsive" style="display:none;width:250px;height:250px;" id="smallImage" src="" /><br/>
-    <img class="img img-responsive" style="display:none;width:250px;height:250px;" id="largeImage" src="" /><br/>
+    <img class="img img-responsive" style="display:none;width:275px;" id="smallImage" src="" /><br/>
+    <a href="" id="smallText"></a>
+    <img class="img img-responsive" style="display:none;width:275px;" id="largeImage" src="" /><br/>
+    <a href="" id="largeText"></a>
 
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="cordova.js" type="text/javascript"></script>
@@ -42,6 +44,7 @@
       function onPhotoDataSuccess(imageData) {
         // Uncomment to view the base64 encoded image data
         // console.log(imageData);
+        $("#smallText").attr("href", imageData);
 
         var smallImage = document.getElementById('smallImage');
         smallImage.style.display = 'block';
@@ -51,6 +54,7 @@
       function onPhotoURISuccess(imageURI) {
         // Uncomment to view the image file URI 
         // console.log(imageURI);
+        $("#largeText").attr("href", imageData);
 
         var largeImage = document.getElementById('largeImage');
         largeImage.style.display = 'block';
