@@ -28,6 +28,8 @@
     <div class="text-center" style="margin-top: 25%;padding: 0 20px;">
       <button type="button" class="btn btn-primary btn-block" id="printTest">Test</button><br/>
       <button type="button" class="btn btn-info btn-block" id="printText">Imprimir</button>
+      <br><br><br>
+      <h2 style="color: #fff;" id="printTestResult"></h2>
     </div>
     
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -39,25 +41,28 @@
 
       function onDeviceReady() {
 
-      }
-
-      $('#printTest').on('click touch', function() {
-        cordova.plugins.zbtprinter.find(function(mac) { 
-          alert(mac); 
-          }, function(fail) { 
-            alert(fail); 
-        });
-      });
-
-      $('#printText').on('click touch', function() {
-        cordova.plugins.zbtprinter.print("^XA^FO10,10^AFN,26,13^FDHello, World!^FS^XZ",
-          function(success) { 
-              alert("Print ok"); 
-          }, function(fail) { 
+        $('#printTest').on('click touch', function() {
+          cordova.plugins.zbtprinter.find(function(mac) { 
+            alert(mac); 
+            $('#printTestResult').text(mac);
+            }, function(fail) { 
               alert(fail); 
-          }
-        );        
-      });
+            $('#printTestResult').text(fail);
+          });
+        });
+
+        $('#printText').on('click touch', function() {
+          cordova.plugins.zbtprinter.print("^XA^FO10,10^AFN,26,13^FDHello, World!^FS^XZ",
+            function(success) { 
+              alert("Print ok"); 
+              $('#printTestResult').text("Print ok");
+            }, function(fail) { 
+              alert(fail); 
+              $('#printTestResult').text(fail);
+            }
+          );        
+        });
+      }
     </script>
     <!--script type="text/javascript" charset="utf-8">
       var pictureSource;   // picture source
