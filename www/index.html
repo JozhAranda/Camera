@@ -42,21 +42,23 @@
       }
 
       function onPhotoDataSuccess(imageData) {
-        $("#smallText").attr("href", imageData);
-        $("#smallText").text(imageData)
 
         var smallImage = document.getElementById('smallImage');
         smallImage.style.display = 'block';
         smallImage.src = "data:image/jpeg;base64," + imageData;
+        
+        $("#smallText").attr("href", imageData);
+        $("#smallText").text(imageData);
       }
 
       function onPhotoURISuccess(imageURI) {
-        $("#largeText").attr("href", imageData);
-        $("#largeText").text(imageData)
 
         var largeImage = document.getElementById('largeImage');
         largeImage.style.display = 'block';
         largeImage.src = imageURI;
+
+        $("#largeText").attr("href", imageData);
+        $("#largeText").text(imageData);
       }
 
       function capturePhoto() {
