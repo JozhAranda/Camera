@@ -32,36 +32,9 @@
       <br><br><br>
       <h3 style="color: #fff;" id="printTestResult"></h3>
     </div>
-    <br><br><br>
     <!--div class="deviceBluetooth well well-xs">
       <h4 id="deviceTestResult"></h4>      
     </div-->
-            <div class="panel-body" style="margin-top: -15px;">
-                <div class="row">
-                  <div class="col-xs-12"> 
-                    <table class="table table-user-information">
-                      <tbody>
-                        <tr>
-                          <td><strong>\r\nNúmero de recibo\r\n</strong><br/>{{ billFine }}</td>
-                          <td><strong>\r\nGarantía\r\n</strong><br/>{{ warrantyFine }}</span></td>
-                          <td><strong>\r\nEstatus\r\n</strong><br/>{{ statusFine }}</td>
-                        </tr>
-                        <tr>
-                          <tr>
-                            <td><strong>\r\nDistrito\r\n</strong><br/>{{ districtFine }}</span></td>
-                            <td><strong>\r\nOficial\r\n</strong><br/>{{ oficcerFine }}</span></td>
-                            <td><strong>\r\nDirección\r\n</strong><br/>{{ addressFine }}</td>
-                          </tr>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-            </div>
-
-          </div>
-      </div>       
-    </div>
     
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -114,9 +87,7 @@
         $('#printText').on('click touch', function() {
           var MacAddress = $('#printMac').val();
           
-          var htmlAll = "                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
+          var htmlAll = "                                                                                                                                                                               
                                                                                                 ``````                                                                                                  
                                                                                       `.,:;;;;;;;;;;;;;;;;;;;;;;;;:,`                                                                                   
                                                                                  .,;;;;;;;;;;;;;;;;;;;;;;;;;;;;''';;'''':,`                                                                             
@@ -308,11 +279,9 @@
                                                                            `,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;':.                                                                        
                                                                                `,;';;;;'''';;;;;;;;;;;;;;;;;;;';;;';;;;;;;:.                                                                            
                                                                                     `,:;';';;;;;;;;;;;;;;;;;;;;;;;'';:.`                                                                                
-                                                                                           ``.,:;;;;'';;;;;;:,.``                                                                                       
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        "
+                                                                                           ``.,:;;;;'';;;;;;:,.``                                                                                                                                                                              
+          ";
+
             htmlAll += "\r\n\r\nNombre: Joshua Aranda Moreno\r\n"; 
             htmlAll += "\r\nNúmero de boleta:" + "3766442014";
             htmlAll += "\r\nNúmero de artículo" + "92";
