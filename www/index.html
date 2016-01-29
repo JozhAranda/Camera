@@ -52,7 +52,7 @@
 
           /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
           bluetoothSerial.list(function(devices) {
-            var html = '<div class="modal fade" tabindex="-1" role="dialog">';
+            var html = '<div class="modal fade" id="modalDevice" tabindex="-1" role="dialog">';
             html += '<div class="modal fade" tabindex="-1" role="dialog">';
             html += '<div class="modal-dialog">';
             html += '<div class="modal-content">';
@@ -62,6 +62,7 @@
             })
             html += '</div></div></div></div>';
             $('html').append(html);
+            $('#modalDevice').modal('show');
           }, failure);
 
           /* MUESTRA LA MAC DEL DISPOSITIVO */
