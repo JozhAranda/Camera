@@ -29,12 +29,13 @@
       <button type="button" class="btn btn-primary btn-block" id="printTest">Test</button><br/><br/>
       <button type="button" class="btn btn-info btn-block" id="printText">Imprimir</button>
       <br><br><br>
-      <h2 style="color: #fff;" id="printTestResult"></h2>
+      <h2 style="color: #fff;box-shadow: 1px 2px 10px #333;" id="printTestResult"></h2>
     </div>
     
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="cordova.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
     <script type="text/javascript">
       document.addEventListener("deviceready",onDeviceReady,false);
@@ -42,35 +43,51 @@
       function onDeviceReady() {
 
         $('#printTest').on('click touch', function() {
-
+          /* ALERTA SI EL DISPOSITIVO ESTA HABILITADO PARA IMPRIMIR */
           cordova.plugins.printer.isAvailable(
             function (isAvailable) {
               alert(isAvailable ? 'Service is available' : 'Service NOT available');
             }
           );
-          cordova.plugins.zbtprinter.find(function(mac) { 
-            alert(mac); 
-            $('#printTestResult').text(mac);
+
+          /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
+          bluetoothSerial.list(function(devices) {
+            var html = '<div class="modal fade" tabindex="-1" role="dialog">';
+            html += '<div class="modal fade" tabindex="-1" role="dialog">';
+            html += '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-body">';
+            devices.forEach(function(device) {
+              html += '<label>' + device.name + '</label><input type="radio" id="deviceBluetooth" value="' + device.id + '"/>';
+            })
+            html += '</div></div></div></div>';
+            $('html').append(html);
+          }, failure);
+
+          /* MUESTRA LA MAC DEL DISPOSITIVO */
+          cordova.plugins.zbtprinter.find(
+            function(mac) { 
+              $('#printTestResult').text(mac);
             }, function(fail) { 
-              alert(fail); 
-            $('#printTestResult').text(fail);
+              $('#printTestResult').text(fail);
           });
         });
 
+        /* REVISA SI EL RADIO BUTTON FUE CHECKED */
+        var MacAddress;
+        $('input[type="radio"]').on('change', function() {
+           MacAddress = $('input[type="radio"]:checked').val();
+        });
+
+        /* MUESTRA SI LA IMPRESION FUE EXITOSA */
         $('#printText').on('click touch', function() {
-          cordova.plugins.zbtprinter.print("AC:3F:A4:50:6A:D0", "Hello World!\r\n",
+          cordova.plugins.zbtprinter.print(MacAddress, "Hello World!\r\n",
             function(success) { 
-              alert("Print ok"); 
               $('#printTestResult').text("Print ok");
             }, function(fail) { 
-              alert(fail); 
               $('#printTestResult').text(fail);
             }
-          );
-          /*var page = '<h1>Hello Document</h1>';
-          cordova.plugins.printer.print(page, 'index.html', function () {
-              alert('printing finished or canceled')
-          });*/        
+          );        
         });
       }
     </script>
