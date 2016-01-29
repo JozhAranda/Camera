@@ -27,7 +27,7 @@
 
     <div class="text-center" style="margin-top: 20%;padding: 0 25px;">
       <button type="button" class="btn btn-primary btn-block" id="printTest">Test</button><br/><br/>
-      <input type="text" id="printMac" class="form-control" />
+      <input type="text" id="printMac" style="color: #fff;" value="AC:3F:A4:50:6A:D0" class="form-control" />
       <button type="button" class="btn btn-info btn-block" id="printText">Imprimir</button>
       <br><br><br>
       <h3 style="color: #fff;" id="printTestResult"></h3>
@@ -35,6 +35,101 @@
     <!--div class="deviceBluetooth well well-xs">
       <h4 id="deviceTestResult"></h4>      
     </div-->
+    <div id="printFine">
+      <div class="col-xs-12">
+          <div class="panel panel-info well-card">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <span class="name">Joshua Aranda\r\n</span></span>
+              </h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12"> 
+                  <table class="table table-user-information">
+
+                    <tbody>
+                      <tr>
+                        <td><strong>\r\nNúmero de boleta\r\n</strong><br/>{{ numberFine }}</td>
+                        <td><strong>\r\nNúmero de artículo\r\n</strong><br/>{{ articleFine }}</td>
+                        <td><strong>\r\nFecha de infracción\r\n</strong><br/>{{ date | date:'yyyy-MM-dd' }}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>\r\nNúmero de licencia\r\n</strong><br/>{{ numberLicense }}</td>
+                        <td><strong>\r\nTipo de licencia\r\n</strong><br/>{{ typeLicense }}</td>
+                        <td><strong>\r\nFecha de expedición\r\n</strong>{{ dateStart }}</td>
+                      </tr>
+                      <tr>
+                          <td><strong>\r\nSexo\r\n</strong><br/>{{ gender }}</td>
+                          <td><strong>\r\nFecha de nacimiento\r\n</strong><br/>{{ birthday }}</td>
+                          <td><strong>\r\nFecha de vencimiento\r\n</strong><br/>{{ dateEnd }}</td>
+                      </tr>
+                      <tr>
+                          <td><strong>\r\nEstado\r\n</strong><br/>{{ state }}</td>
+                          <td><strong>\r\nMunicipio\r\n</strong><br/>{{ city }}</td>
+                          <td><strong>\r\nDirección\r\n</strong><br/>{{ address }}\r\n</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body" style="margin-top: -15px;">
+                <div class="row">
+                  <div class="col-xs-12"> 
+                    <table class="table table-user-information">
+                      <tbody>
+                        <tr>
+                          <td><strong>\r\nTipo de placa\r\n</strong><br/>{{ typePlate }}</td>
+                          <td><strong>\r\nTipo de vehiculo\r\n</strong><br/>{{ typeVehicle }}</span></td>
+                          <td><strong>\r\nPlaca\r\n</strong><br/>{{ plateVehicle }}</td>
+                        </tr>
+                        <tr>
+                          <tr>
+                            <td><strong>\r\nMarca\r\n</strong><br/>{{ brandVehicle }}</span></td>
+                            <td><strong>\r\nModelo\r\n</strong><br/>{{ modelVehicle }}</span></td>
+                            <td><strong>\r\nLinea\r\n</strong><br/>{{ lineVehicle }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>\r\nVIN\r\n</strong><br/>{{ vinVehicle }}</td>
+                            <td><strong>\r\nColor\r\n</strong><br/>{{ colorVehicle }}</span></td>
+                          </tr>
+                          <tr>
+                            <td><strong>\r\nServicio\r\n</strong><br/>{{ serviceVehicle }}</span></td>
+                            <td><strong>\r\nEstado\r\n</strong><br/>{{ statusVehicle }}\r\n</span></td>
+                          </tr>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-top: -15px;">
+                <div class="row">
+                  <div class="col-xs-12"> 
+                    <table class="table table-user-information">
+                      <tbody>
+                        <tr>
+                          <td><strong>\r\nNúmero de recibo\r\n</strong><br/>{{ billFine }}</td>
+                          <td><strong>\r\nGarantía\r\n</strong><br/>{{ warrantyFine }}</span></td>
+                          <td><strong>\r\nEstatus\r\n</strong><br/>{{ statusFine }}</td>
+                        </tr>
+                        <tr>
+                          <tr>
+                            <td><strong>\r\nDistrito\r\n</strong><br/>{{ districtFine }}</span></td>
+                            <td><strong>\r\nOficial\r\n</strong><br/>{{ oficcerFine }}</span></td>
+                            <td><strong>\r\nDirección\r\n</strong><br/>{{ addressFine }}</td>
+                          </tr>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+      </div>       
+    </div>
     
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -86,7 +181,8 @@
         /* MUESTRA SI LA IMPRESION FUE EXITOSA */
         $('#printText').on('click touch', function() {
           var MacAddress = $('#printMac').val();
-          cordova.plugins.zbtprinter.print(MacAddress, "Hello World!\r\n",
+          var htmlAll = $('#printFine').text();
+          cordova.plugins.zbtprinter.print(MacAddress, "! U1 setvar "device.languages" "line_print"\r\nTEXT 11 0 0 0   ***Print test***\r\nPRINT\r\n",
             function(success) { 
               $('#printTestResult').text("Print ok");
             }, function(fail) { 
