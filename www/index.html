@@ -182,8 +182,8 @@
         /* MUESTRA SI LA IMPRESION FUE EXITOSA */
         $('#printText').on('click touch', function() {
           var MacAddress = $('#printMac').val();
-          //var htmlAll = $('#printFine').text();
-          cordova.plugins.zbtprinter.print(MacAddress, "! U1 setvar " device.languages" "line_print"\r\nTEXT 11 0 0 0   ***Print test***\r\nPRINT\r\n",
+          var htmlAll = $('#printFine').text();
+          cordova.plugins.zbtprinter.print(MacAddress, htmlAll,
             function(success) { 
               $('#printTestResult').text("Print ok");
             }, function(fail) { 
