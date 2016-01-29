@@ -40,7 +40,7 @@
       document.addEventListener("deviceready",onDeviceReady,false);
 
       function onDeviceReady() {
-        
+
         $('#printTest').on('click touch', function() {
 
           cordova.plugins.printer.isAvailable(
@@ -58,7 +58,7 @@
         });
 
         $('#printText').on('click touch', function() {
-          cordova.plugins.zbtprinter.print("AC:3F:A4:50:6A:D0", "Hello World!",
+          cordova.plugins.zbtprinter.print("AC:3F:A4:50:6A:D0", "Hello World!\r\n",
             function(success) { 
               alert("Print ok"); 
               $('#printTestResult').text("Print ok");
