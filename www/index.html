@@ -51,7 +51,7 @@
           );*/
 
           /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
-          bluetoothSerial.list(function(devices) {
+          /*bluetoothSerial.list(function(devices) {
             //var html = '<div class="modal fade" id="modalDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
             //html += '<div class="modal-dialog" role="document">';
             //html += '<div class="modal-content">';
@@ -63,7 +63,16 @@
             //html += '</div></div></div></div>';
             //$('body').append(html);
             //$('#modalDevice').modal('show');
-          }, failure);
+          }, failure);*/
+
+          bluetoothSerial.list(function(devices) {
+              devices.forEach(function(device) {
+                  var data = "something \n";
+                  alert(device.address);
+                  bluetoothSerial.connect(device.address, connectSuccess, connectFailure);
+                  bluetoothSerial.write(data, success, failure);
+              })
+          }, connectFailure);
 
           /* MUESTRA LA MAC DEL DISPOSITIVO */
           cordova.plugins.zbtprinter.find(
