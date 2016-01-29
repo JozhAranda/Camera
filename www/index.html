@@ -61,7 +61,7 @@
               html += '<label>' + device.name + '</label><input type="radio" id="deviceBluetooth" value="' + device.id + '"/>';
             })
             html += '</div></div></div></div>';
-            $('html').append(html);
+            $('body').append(html);
             $('#modalDevice').modal('show');
           }, failure);
 
