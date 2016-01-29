@@ -35,59 +35,11 @@
     <!--div class="deviceBluetooth well well-xs">
       <h4 id="deviceTestResult"></h4>      
     </div-->
-    
-	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="cordova.js" type="text/javascript"></script>
-    
-    <script type="text/javascript">
-      document.addEventListener("deviceready",onDeviceReady,false);
-
-      function onDeviceReady() {
-
-        $('#printTest').on('click touch', function() {
-          /* ALERTA SI EL DISPOSITIVO ESTA HABILITADO PARA IMPRIMIR */
-          cordova.plugins.printer.isAvailable(
-            function (isAvailable) {
-              alert(isAvailable ? 'Servicio disponible' : 'Servicio NO disponible');
-            }
-          );
-
-          /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
-          /*bluetoothSerial.list(function(devices) {
-            $('.form-group').empty();
-            var html = '<div class="form-group">'
-            devices.forEach(function(device) {
-              html += '<label>' + device.name + '</label> <input type="radio" id="deviceBluetooth" name="deviceBluetooth" class="form-control" value="' + device.address + '"/><br/>';
-            })
-            html += '</div>';
-            $('.deviceBluetooth').append(html);
-          }, function(fail) { 
-              $('#printTestResult').text(fail);
-          });*/
-
-          /* MUESTRA LA MAC DEL DISPOSITIVO */
-          cordova.plugins.zbtprinter.find(
-            function(mac) { 
-              $('#printTestResult').text(mac);
-            }, function(fail) { 
-              $('#printTestResult').text(fail);
-          });
-        });
-
-        /* REVISA SI EL RADIO BUTTON FUE CHECKED */
-        /*var MacAddress;
-        $('input[type="radio"]').on('change', function() {
-           MacAddress = $('input[type="radio"]:checked').val();
-           $('#deviceTestResult').text(MacAddress);
-           alert(MacAddress);
-        });*/
-
-        /* MUESTRA SI LA IMPRESION FUE EXITOSA */
-        $('#printText').on('click touch', function() {
-          var MacAddress = $('#printMac').val();
-          
-          var htmlAll = "                                                                                                                                                                               
+<!-- -->
+<pre style="font: 2px/1px monospace;">                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
                                                                                                 ``````                                                                                                  
                                                                                       `.,:;;;;;;;;;;;;;;;;;;;;;;;;:,`                                                                                   
                                                                                  .,;;;;;;;;;;;;;;;;;;;;;;;;;;;;''';;'''':,`                                                                             
@@ -279,9 +231,65 @@
                                                                            `,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;':.                                                                        
                                                                                `,;';;;;'''';;;;;;;;;;;;;;;;;;;';;;';;;;;;;:.                                                                            
                                                                                     `,:;';';;;;;;;;;;;;;;;;;;;;;;;'';:.`                                                                                
-                                                                                           ``.,:;;;;'';;;;;;:,.``                                                                                                                                                                              
-          ";
+                                                                                           ``.,:;;;;'';;;;;;:,.``                                                                                       
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+</pre>
+<!-- -->    
+	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="cordova.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+      document.addEventListener("deviceready",onDeviceReady,false);
 
+      function onDeviceReady() {
+
+        $('#printTest').on('click touch', function() {
+          /* ALERTA SI EL DISPOSITIVO ESTA HABILITADO PARA IMPRIMIR */
+          cordova.plugins.printer.isAvailable(
+            function (isAvailable) {
+              alert(isAvailable ? 'Servicio disponible' : 'Servicio NO disponible');
+            }
+          );
+
+          /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
+          /*bluetoothSerial.list(function(devices) {
+            $('.form-group').empty();
+            var html = '<div class="form-group">'
+            devices.forEach(function(device) {
+              html += '<label>' + device.name + '</label> <input type="radio" id="deviceBluetooth" name="deviceBluetooth" class="form-control" value="' + device.address + '"/><br/>';
+            })
+            html += '</div>';
+            $('.deviceBluetooth').append(html);
+          }, function(fail) { 
+              $('#printTestResult').text(fail);
+          });*/
+
+          /* MUESTRA LA MAC DEL DISPOSITIVO */
+          cordova.plugins.zbtprinter.find(
+            function(mac) { 
+              $('#printTestResult').text(mac);
+            }, function(fail) { 
+              $('#printTestResult').text(fail);
+          });
+        });
+
+        /* REVISA SI EL RADIO BUTTON FUE CHECKED */
+        /*var MacAddress;
+        $('input[type="radio"]').on('change', function() {
+           MacAddress = $('input[type="radio"]:checked').val();
+           $('#deviceTestResult').text(MacAddress);
+           alert(MacAddress);
+        });*/
+
+        /* MUESTRA SI LA IMPRESION FUE EXITOSA */
+        $('#printText').on('click touch', function() {
+          var MacAddress = $('#printMac').val();
+          
+          var htmlAll = $('pre').text();
             htmlAll += "\r\n\r\nNombre: Joshua Aranda Moreno\r\n"; 
             htmlAll += "\r\nNúmero de boleta:" + "3766442014";
             htmlAll += "\r\nNúmero de artículo" + "92";
