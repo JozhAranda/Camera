@@ -44,25 +44,25 @@
 
         $('#printTest').on('click touch', function() {
           /* ALERTA SI EL DISPOSITIVO ESTA HABILITADO PARA IMPRIMIR */
-          cordova.plugins.printer.isAvailable(
+          /*cordova.plugins.printer.isAvailable(
             function (isAvailable) {
               alert(isAvailable ? 'Service is available' : 'Service NOT available');
             }
-          );
+          );*/
 
           /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
           bluetoothSerial.list(function(devices) {
-            var html = '<div class="modal fade" id="modalDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
-            html += '<div class="modal-dialog" role="document">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-body">';
+            //var html = '<div class="modal fade" id="modalDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
+            //html += '<div class="modal-dialog" role="document">';
+            //html += '<div class="modal-content">';
+            //html += '<div class="modal-body">';
             devices.forEach(function(device) {
-              alert(device.name + ': ' + device.id);
-              html += '<label>' + device.name + '</label><input type="radio" id="deviceBluetooth" value="' + device.id + '"/>';
+              alert(device.id);
+              //html += '<label>' + device.name + '</label><input type="radio" id="deviceBluetooth" value="' + device.id + '"/>';
             })
-            html += '</div></div></div></div>';
-            $('body').append(html);
-            $('#modalDevice').modal('show');
+            //html += '</div></div></div></div>';
+            //$('body').append(html);
+            //$('#modalDevice').modal('show');
           }, failure);
 
           /* MUESTRA LA MAC DEL DISPOSITIVO */
