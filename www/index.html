@@ -32,7 +32,7 @@
       <h3 style="color: #fff;box-shadow: 1px 2px 10px #333;" id="printTestResult"></h3>
     </div>
     <div class="deviceBluetooth well well-xs">
-      <h4 style="color: #fff;box-shadow: 1px 2px 10px #333;" id="deviceTestResult"></h4>      
+      <h4 id="deviceTestResult"></h4>      
     </div>
     
 	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -49,24 +49,19 @@
           /* ALERTA SI EL DISPOSITIVO ESTA HABILITADO PARA IMPRIMIR */
           cordova.plugins.printer.isAvailable(
             function (isAvailable) {
-              alert(isAvailable ? 'Service is available' : 'Service NOT available');
+              alert(isAvailable ? 'Servicio disponible' : 'Servicio NO disponible');
             }
           );
 
           /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
           bluetoothSerial.list(function(devices) {
-            //var html = '<div class="modal fade" id="modalDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
-            //html += '<div class="modal-dialog" role="document">';
-            //html += '<div class="modal-content">';
-            //html += '<div class="modal-body">';
+            $('.form-group').empty();
             var html = '<div class="form-group">'
             devices.forEach(function(device) {
-              html += '<label>' + device.name + '</label> <input type="radio" id="deviceBluetooth" class="form-control" value="' + device.address + '"/><br/>';
+              html += '<label>' + device.name + '</label> <input type="radio" id="deviceBluetooth" name="deviceBluetooth" class="form-control" value="' + device.address + '"/><br/>';
             })
-            //html += '</div></div></div></div>';
             html += '</div>';
             $('.deviceBluetooth').append(html);
-            //$('#modalDevice').modal('show');
           }, function(fail) { 
               $('#printTestResult').text(fail);
           });
