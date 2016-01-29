@@ -40,14 +40,14 @@
       document.addEventListener("deviceready",onDeviceReady,false);
 
       function onDeviceReady() {
-
-        cordova.plugins.printer.isAvailable(
-          function (isAvailable) {
-            alert(isAvailable ? 'Service is available' : 'Service NOT available');
-          }
-        );
-
+        
         $('#printTest').on('click touch', function() {
+
+          cordova.plugins.printer.isAvailable(
+            function (isAvailable) {
+              alert(isAvailable ? 'Service is available' : 'Service NOT available');
+            }
+          );
           cordova.plugins.zbtprinter.find(function(mac) { 
             alert(mac); 
             $('#printTestResult').text(mac);
@@ -58,7 +58,7 @@
         });
 
         $('#printText').on('click touch', function() {
-          cordova.plugins.zbtprinter.print("AC:3F:A4:50:6A:D0", "^XA^FO10,10^AFN,26,13^FDHello, World!^FS^XZ",
+          cordova.plugins.zbtprinter.print("AC:3F:A4:50:6A:D0", "Hello World!",
             function(success) { 
               alert("Print ok"); 
               $('#printTestResult').text("Print ok");
@@ -67,10 +67,10 @@
               $('#printTestResult').text(fail);
             }
           );
-          var page = '<h1>Hello Document</h1>';
+          /*var page = '<h1>Hello Document</h1>';
           cordova.plugins.printer.print(page, 'index.html', function () {
               alert('printing finished or canceled')
-          });        
+          });*/        
         });
       }
     </script>
