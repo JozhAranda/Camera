@@ -66,12 +66,13 @@
           }, failure);*/
 
           bluetoothSerial.list(function(devices) {
-              devices.forEach(function(device) {
-                  var data = "something \n";
-                  alert(device.address);
-                  bluetoothSerial.connect(device.address, connectSuccess, connectFailure);
-                  bluetoothSerial.write(data, success, failure);
-              })
+            devices.forEach(function(device) {
+              alert(device.address);
+              alert(device.id);
+              alert(device.name);
+              //bluetoothSerial.connect(device.address, connectSuccess, connectFailure);
+              //bluetoothSerial.write(data, success, failure);
+            })
           }, connectFailure);
 
           /* MUESTRA LA MAC DEL DISPOSITIVO */
