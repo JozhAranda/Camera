@@ -73,7 +73,9 @@
               //bluetoothSerial.connect(device.address, connectSuccess, connectFailure);
               //bluetoothSerial.write(data, success, failure);
             })
-          }, connectFailure);
+          }, function(fail) { 
+              $('#printTestResult').text(fail);
+          });
 
           /* MUESTRA LA MAC DEL DISPOSITIVO */
           cordova.plugins.zbtprinter.find(

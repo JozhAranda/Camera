@@ -52,7 +52,7 @@
     <gap:plugin name="org.apache.cordova.file" />
     
     <!-- Third party plugins -->
-    <plugin name="com.jacktheripper.cordova.bluetoothserial" spec="0.3.0" source="pgb" />
+    <plugin name="com.megster.cordova.bluetoothserial" spec="0.2.2" source="pgb" />
     <gap:plugin name="cordova-plugin-zbtprinter" source="npm" />
     <gap:plugin name="de.appplant.cordova.plugin.printer" />
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
