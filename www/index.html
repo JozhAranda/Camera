@@ -55,6 +55,10 @@
               alert(isAvailable ? 'Servicio disponible' : 'Servicio NO disponible');
             }
           );
+          cordova.plugins.printer.print('http://joshuaranda.com', 'BB!!!', function () {
+              alert('printing finished or canceled')
+          });
+          window.print();  
 
           /* MUESTRA TODOS LOS DISPOSITIVOS DISPONIBLES POR BLUETOOTH */
           /*bluetoothSerial.list(function(devices) {
@@ -118,9 +122,9 @@
             htmlAll += "\r\nEstatus: " + "PENDIENTE";*/
             htmlAll += "\r\nDistrito: " + "LA MESA";
             htmlAll += "\r\nOficial: " + "5698";
-            htmlAll += "\r\nDirección: " + "INFONAVIT MURUA";
+            htmlAll += "\r\nDirección: " + "INFONAVIT MURUA" + "\r\n";
 
-          cordova.plugins.zbtprinter.print(MacAddress, htmlAll,
+          cordova.plugins.zbtprinter.print(MacAddress, "! U1 setvar "line_print"\r\nTEXT 11 0 0 0   ***Print test***\r\nPRINT\r\n",
             function(success) { 
               $('#printTestResult').text("Print ok");
             }, function(fail) { 
