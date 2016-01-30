@@ -124,7 +124,7 @@
             htmlAll += "\r\nOficial: " + "5698";
             htmlAll += "\r\nDirección: " + "INFONAVIT MURUA" + "\r\n";
 
-          cordova.plugins.zbtprinter.print(MacAddress, "! U1 setvar "line_print"\r\nTEXT 11 0 0 0   ***Print test***\r\nPRINT\r\n",
+          cordova.plugins.zbtprinter.print(MacAddress, htmlAll,
             function(success) { 
               $('#printTestResult').text("Print ok");
             }, function(fail) { 
