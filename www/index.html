@@ -92,36 +92,33 @@
           
           var htmlAll = $('img').attr('src');
             htmlAll += "\r\n\r\nNombre: Joshua Aranda Moreno\r\n"; 
-            htmlAll += "\r\nNúmero de boleta:" + "3766442014";
-            htmlAll += "\r\nNúmero de artículo" + "92";
-            htmlAll += "\r\nFecha de infracción" + "2014-03-03. 10:08";
-            htmlAll += "\r\nNúmero de licencia" + "210638838";
-            htmlAll += "\r\nTipo de licencia" + "T";
-            htmlAll += "\r\nFecha de expedición" + "N/A";
-            htmlAll += "\r\nSexo" + "MASCULINO";
-            htmlAll += "\r\nFecha de nacimiento" + "1989-05-28";
-            htmlAll += "\r\nFecha de vencimiento" + "N/A";
-            htmlAll += "\r\nEstado" + "BAJA CALIFORNIA";
-            htmlAll += "\r\nMunicipio" + "TIJUANA";
-            htmlAll += "\r\nDirección" + "N/A";
+            htmlAll += "\r\nNúmero de boleta: " + "3766442014";
+            htmlAll += "\r\nNúmero de artículo: " + "92";
+            htmlAll += "\r\nFecha de infracción: " + "2014-03-03, 10:08";
+            htmlAll += "\r\nNúmero de licencia: " + "210638838";
+            /*htmlAll += "\r\nTipo de licencia: " + "T";
+            htmlAll += "\r\nFecha de expedición: " + "N/A";
+            htmlAll += "\r\nSexo" + "MASCULINO: ";
+            htmlAll += "\r\nFecha de nacimiento: " + "1989-05-28";
+            htmlAll += "\r\nFecha de vencimiento: " + "N/A";*/
+            htmlAll += "\r\nLocación: " + "BAJA CALIFORNIA, TIJUANA";
+            //htmlAll += "\r\nDirección: " + "N/A";
 
-            htmlAll += "\r\n\r\nTipo de placa" + "CALIFORNIA";
-            htmlAll += "\r\nTipo de vehiculo" + "SEDAN";
-            htmlAll += "\r\nPlaca" + "3EDN226";
-            htmlAll += "\r\nMarca" + "CHEVROLET";
-            htmlAll += "\r\nModelo" + "1999";
-            htmlAll += "\r\nLinea" + "7784";
-            htmlAll += "\r\nVIN" + "N/A";
-            htmlAll += "\r\nColor" + "GUINDA";
-            htmlAll += "\r\nServicio" + "PARTICULAR";
-            htmlAll += "\r\nEstado" + "CONDICIONES";
+            htmlAll += "\r\n\r\nTipo de placa: " + "CALIFORNIA";
+            htmlAll += "\r\nTipo de vehiculo: " + "SEDAN";
+            htmlAll += "\r\nPlaca: " + "3EDN226";
+            htmlAll += "\r\nMarca: " + "CHEVROLET 1999 CAVALIER";
+            //htmlAll += "\r\nVIN: " + "N/A";
+            htmlAll += "\r\nColor: " + "GUINDA";
+            htmlAll += "\r\nServicio: " + "PARTICULAR";
+            //htmlAll += "\r\nEstado: " + "CONDICIONES";
 
-            htmlAll += "\r\n\r\nNúmero de recibo" + "3766442014";
-            htmlAll += "\r\nGarantía" + "N/A";
-            htmlAll += "\r\nEstatus" + "PENDIENTE";
-            htmlAll += "\r\nDistrito" + "LA MESA";
-            htmlAll += "\r\nOficial" + "5698";
-            htmlAll += "\r\nDirección" + "INFONAVIT MURUA";
+            /*htmlAll += "\r\n\r\nNúmero de recibo: " + "3766442014";
+            htmlAll += "\r\nGarantía: " + "N/A";
+            htmlAll += "\r\nEstatus: " + "PENDIENTE";*/
+            htmlAll += "\r\nDistrito: " + "LA MESA";
+            htmlAll += "\r\nOficial: " + "5698";
+            htmlAll += "\r\nDirección: " + "INFONAVIT MURUA";
 
           cordova.plugins.zbtprinter.print(MacAddress, htmlAll,
             function(success) { 
@@ -129,7 +126,8 @@
             }, function(fail) { 
               $('#printTestResult').text(fail);
             }
-          );        
+          );
+          window.print();        
         });
       }
     </script>
